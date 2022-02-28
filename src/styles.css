@@ -1,0 +1,109 @@
+body {
+	background: radial-gradient(
+		circle at 10% 20%,
+		rgb(101, 255, 253) 0%,
+		rgb(36, 153, 238) 90%
+	);
+}
+
+h1,
+h2,
+h3 {
+	text-align: center;
+	font-family: "Livvic", sans-serif;
+	color: #1e56a0;
+}
+h1.current-city {
+	font-size: 55px;
+	font-weight: bolder;
+	padding: 70px 40px 30px;
+}
+
+h2 {
+	font-size: 50px;
+	font-weight: 500;
+	padding-top: 15px;
+}
+
+h2.date {
+	font-weight: 600;
+}
+
+h3 i {
+	color: #f6f6f6;
+	font-size: 40px;
+	display: inline;
+	padding-bottom: 25px;
+}
+
+.container {
+	max-width: 800px;
+}
+
+.current-weather-icon {
+	font-size: 150px;
+	text-align: center;
+	color: #f6f6f6;
+	display: block;
+}
+
+.change-city {
+	padding-top: 10px;
+	padding-bottom: 5px;
+	width: 300px;
+}
+
+.search-button {
+	background-color: #d6e4f0;
+	color: #1e56a0;
+}
+
+.checkbox {
+	margin-bottom: 20px;
+}
+
+.current-weather-info {
+	background-color: rgba(255, 255, 255, 0.6);
+	border-radius: 20px;
+	width: 300px;
+}
+
+.change-temperature-scale {
+	padding: 10px 0 30px;
+	text-align: center;
+	color: #1e56a0;
+}
+
+.five-day-header {
+	text-align: center;
+	font-size: 25px;
+	font-weight: 600;
+	font-family: "Livvic", sans-serif;
+	color: #1e56a0;
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 100px;
+	margin: 50px auto 15px;
+	max-width: 250px;
+}
+
+.day-of-week {
+	text-align: center;
+	color: #1e56a0;
+}
+
+.weather-icon {
+	font-size: 40px;
+	display: block;
+	text-align: center;
+	color: rgb(46, 148, 185, 0.5);
+}
+
+.high-temp,
+.low-temp {
+	font-size: 20px;
+	text-align: center;
+}
+
+.low-temp {
+	color: grey;
+}
