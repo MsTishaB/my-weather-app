@@ -36,6 +36,12 @@ h3 i {
 	padding-bottom: 25px;
 }
 
+p {
+	text-align: right;
+	padding: 20px;
+	color: #1e56a0;
+}
+
 .container {
 	max-width: 800px;
 }
