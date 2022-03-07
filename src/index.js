@@ -16,10 +16,10 @@ let date = document.querySelector("#date");
 
 let currentDate = new Date();
 date.innerHTML = currentTimeInfo(currentDate);
+
 function showCityTemperature(response) {
-	document.querySelector("#current-temp").innerHTML = `${Math.round(
-		response.data.main.temp
-	)}°C`;
+	celsiusTemp = Math.round(response.data.main.temp);
+	document.querySelector("#current-temp").innerHTML = `${celsiusTemp}°C`;
 	document.querySelector("#current-city").innerHTML = response.data.name;
 	document.querySelector("#wind").innerHTML = `${Math.round(
 		response.data.wind.speed
@@ -72,20 +72,22 @@ currentLocationCheckBox.addEventListener("change", findGeoLocation);
 
 //Conversion between Celcius & Fahrenheit
 
-//function changeToCelsius() {
-//let celsiusTemp = document.querySelector("#current-temp");
-//	celsiusTemp.innerHTML = "1°C";
-//}
+function changeToCelsius() {
+	let showcelsiusTemp = document.querySelector("#current-temp");
+	showcelsiusTemp.innerHTML = `${celsiusTemp}°C`;
+}
 
-//function changetoFahrenheit() {
-//	let fahrenheitTemp = document.querySelector("#current-temp");
-//	fahrenheitTemp.innerHTML = "34°F";
-//}
+function changetoFahrenheit() {
+	let fahrenheitTemp = document.querySelector("#current-temp");
+	fahrenheitTemp.innerHTML = `${Math.round((celsiusTemp * 9) / 5 + 32)}°F`;
+}
 
-//let celsiusRadioButton = document.querySelector("#flexRadioDefault1");
-//celsiusRadioButton.addEventListener("click", changeToCelsius);
+let celsiusRadioButton = document.querySelector("#flexRadioDefault1");
+celsiusRadioButton.addEventListener("click", changeToCelsius);
 
-//let fahrenheitRadioButton = document.querySelector("#flexRadioDefault2");
-//fahrenheitRadioButton.addEventListener("click", changetoFahrenheit);
+let celsiusTemp = null;
+
+let fahrenheitRadioButton = document.querySelector("#flexRadioDefault2");
+fahrenheitRadioButton.addEventListener("click", changetoFahrenheit);
 
 search("New York");
