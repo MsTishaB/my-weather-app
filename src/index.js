@@ -12,11 +12,6 @@ function currentTimeInfo(date) {
 	return `${day} ${currentHour}:${currentMinute}`;
 }
 
-let date = document.querySelector("#date");
-
-let currentDate = new Date();
-date.innerHTML = currentTimeInfo(currentDate);
-
 function showCityTemperature(response) {
 	celsiusTemp = Math.round(response.data.main.temp);
 	document.querySelector("#current-temp").innerHTML = `${celsiusTemp}°C`;
@@ -24,6 +19,10 @@ function showCityTemperature(response) {
 	document.querySelector("#wind").innerHTML = `${Math.round(
 		response.data.wind.speed
 	)} mph`;
+	document.querySelector(
+		"#description"
+	).innerHTML = `${response.data.weather[0].description}`;
+
 	document
 		.querySelector("#icon")
 		.setAttribute(
@@ -70,7 +69,7 @@ let currentLocationCheckBox = document.querySelector(
 );
 currentLocationCheckBox.addEventListener("change", findGeoLocation);
 
-//Conversion between Celcius & Fahrenheit
+//Conversion between Celsius & Fahrenheit
 
 function changeToCelsius() {
 	let showcelsiusTemp = document.querySelector("#current-temp");
@@ -89,5 +88,10 @@ let celsiusTemp = null;
 
 let fahrenheitRadioButton = document.querySelector("#flexRadioDefault2");
 fahrenheitRadioButton.addEventListener("click", changetoFahrenheit);
+
+let date = document.querySelector("#date");
+
+let currentDate = new Date();
+date.innerHTML = currentTimeInfo(currentDate);
 
 search("New York");

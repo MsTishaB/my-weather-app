@@ -104,6 +104,10 @@ p {
 	color: rgb(46, 148, 185, 0.5);
 }
 
+.weather-description {
+	text-transform: capitalize;
+}
+
 .high-temp,
 .low-temp {
 	font-size: 20px;
