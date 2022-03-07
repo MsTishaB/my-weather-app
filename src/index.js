@@ -16,7 +16,7 @@ function showCityTemperature(response) {
 	celsiusTemp = Math.round(response.data.main.temp);
 	document.querySelector("#current-temp").innerHTML = `${celsiusTemp}°C`;
 	document.querySelector("#current-city").innerHTML = response.data.name;
-	document.querySelector("#wind").innerHTML = `${Math.round(
+	document.querySelector("#wind-speed").innerHTML = `${Math.round(
 		response.data.wind.speed
 	)} mph`;
 	document.querySelector(

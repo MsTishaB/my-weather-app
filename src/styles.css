@@ -9,14 +9,13 @@ body {
 h1,
 h2,
 h3 {
-	text-align: center;
 	font-family: "Livvic", sans-serif;
 	color: #1e56a0;
 }
 h1.current-city {
 	font-size: 55px;
 	font-weight: bolder;
-	padding: 70px 40px 30px;
+	padding: 20px 40px 10px;
 }
 
 h2 {
@@ -36,7 +35,7 @@ h3 i {
 	padding-bottom: 25px;
 }
 
-p {
+p.signature {
 	text-align: right;
 	padding: 20px;
 	color: #1e56a0;
@@ -48,9 +47,9 @@ p {
 
 .main-icon {
 	display: block;
-	width: 200px;
+	width: 100px;
 	position: relative;
-	left: 60px;
+	left: 10px;
 }
 
 .change-city {
@@ -71,7 +70,7 @@ p {
 .current-weather-info {
 	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 20px;
-	width: 300px;
+	max-width: 400px;
 }
 
 .change-temperature-scale {
@@ -106,8 +105,11 @@ p {
 
 .weather-description {
 	text-transform: capitalize;
+	margin: 10px 20px;
 }
-
+.wind {
+	margin-left: 20px;
+}
 .high-temp,
 .low-temp {
 	font-size: 20px;
