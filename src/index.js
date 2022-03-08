@@ -1,6 +1,7 @@
 //Current Time Code
 
-function currentTimeInfo(date) {
+function currentTimeInfo(timestamp) {
+	let date = new Date(timestamp);
 	let currentHour = date.getHours();
 	let currentMinute = date.getMinutes();
 	if (currentMinute < 10) {
@@ -14,11 +15,14 @@ function currentTimeInfo(date) {
 
 function showCityTemperature(response) {
 	celsiusTemp = Math.round(response.data.main.temp);
+	let localTime = currentTimeInfo(
+		response.data.dt * 1000 + response.data.timezone * 1000
+	);
 	document.querySelector("#current-temp").innerHTML = `${celsiusTemp}°C`;
 	document.querySelector("#current-city").innerHTML = response.data.name;
-	document.querySelector("#wind-speed").innerHTML = `${Math.round(
+	document.querySelector("#wind-speed").innerHTML = `Winds ${Math.round(
 		response.data.wind.speed
-	)} mph`;
+	)}`;
 	document.querySelector(
 		"#description"
 	).innerHTML = `${response.data.weather[0].description}`;
@@ -29,6 +33,8 @@ function showCityTemperature(response) {
 			"src",
 			`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
 		);
+	document.querySelector("#date").innerHTML = `Local Time: ${localTime}`;
+	console.log(response.data);
 }
 
 function search(city) {
@@ -88,10 +94,5 @@ let celsiusTemp = null;
 
 let fahrenheitRadioButton = document.querySelector("#flexRadioDefault2");
 fahrenheitRadioButton.addEventListener("click", changetoFahrenheit);
-
-let date = document.querySelector("#date");
-
-let currentDate = new Date();
-date.innerHTML = currentTimeInfo(currentDate);
 
 search("New York");

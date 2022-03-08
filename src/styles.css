@@ -15,17 +15,18 @@ h3 {
 h1.current-city {
 	font-size: 55px;
 	font-weight: bolder;
-	padding: 20px 40px 10px;
+	padding: 20px 40px 0px;
 }
 
 h2 {
-	font-size: 50px;
+	font-size: 70px;
 	font-weight: 500;
-	padding-top: 15px;
 }
 
 h2.date {
-	font-weight: 600;
+	font-weight: 300;
+	font-size: 20px;
+	margin-left: 40px;
 }
 
 h3 i {
@@ -74,8 +75,8 @@ p.signature {
 }
 
 .change-temperature-scale {
-	padding: 10px 0 30px;
-	text-align: center;
+	padding: 10px 20px 0px;
+
 	color: #1e56a0;
 }
 
@@ -105,10 +106,16 @@ p.signature {
 
 .weather-description {
 	text-transform: capitalize;
-	margin: 10px 20px;
+	margin: 0px 10px;
+	font-size: 25px;
+	font-style: italic;
+	font-weight: 300;
 }
 .wind {
 	margin-left: 20px;
+	font-size: 25px;
+	font-style: italic;
+	font-weight: 300;
 }
 .high-temp,
 .low-temp {

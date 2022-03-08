@@ -63,51 +63,56 @@
 						</div>
 					</form>
 				</div>
+			</div>
+			<!--Current weather information-->
+			<div class="current-weather-info">
+				<h1 class="current-city" id="current-city"></h1>
 
-				<!--Current weather information-->
-				<div class="current-weather-info">
-					<h1 class="current-city" id="current-city"></h1>
-
-					<h3 class="date" id="date"></h3>
-          <div class="row">
-            <div class="col-3">
-					<img src="" id="icon" class="main-icon" /></div>
-          <div class="col-3">
-					<h2 id="current-temp"></h2></div>
+				<h2 class="date" id="date"></h2>
+				<div class="row">
+					<div class="col-3">
+						<img src="" id="icon" class="main-icon" />
+					</div>
+					<div class="col-4">
+						<h2 id="current-temp"></h2>
+					</div>
 					<!--Changing temperature scale-->
- <div class="col-6">
-					<div class="change-temperature-scale">
-						<input
-							class="form-check-input"
-							type="radio"
-							name="flexRadioDefault"
-							id="flexRadioDefault1"
-							checked
-						/>
-						<label class="form-check-label" for="flexRadioDefault1">
-							Celsius
-						</label>
-						<div>
-						<input
-							class="form-check-input"
-							name="flexRadioDefault"
-							type="radio"
-							id="flexRadioDefault2"
-						/>
-						<label class="form-check-label" for="flexRadioDefault2">
-							Fahrenheit
-						</label></div></div></div>
-					</span> </div>
-<h3 class="weather-description" id="description"></h3>
-					<h3 class="wind">
-            	
-              <i class="fas fa-wind"></i>
-					 <span id="wind-speed"></span>
-					
-					</h3></row>
+					<div class="col-5">
+						<div class="change-temperature-scale">
+							<input
+								class="form-check-input"
+								type="radio"
+								name="flexRadioDefault"
+								id="flexRadioDefault1"
+								checked
+							/>
+							<label class="form-check-label" for="flexRadioDefault1">
+								Celsius
+							</label>
+							<div>
+								<input
+									class="form-check-input"
+									name="flexRadioDefault"
+									type="radio"
+									id="flexRadioDefault2"
+								/>
+								<label class="form-check-label" for="flexRadioDefault2">
+									Fahrenheit
+								</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-6">
+							<h3 class="weather-description" id="description"></h3>
+						</div>
+						<div class="col-6">
+							<h3 class="wind" id="wind-speed"></h3>
+						</div>
+					</div>
 				</div>
 			</div>
-
 			<!--5 day forecast grid
 
       <div class="row">
