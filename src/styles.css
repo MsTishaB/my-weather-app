@@ -75,6 +75,7 @@ p.signature {
 
 .change-temperature-scale {
 	color: #1e56a0;
+	margin-bottom: 20px;
 }
 
 .five-day-header {
@@ -103,13 +104,10 @@ p.signature {
 
 .weather-description {
 	text-transform: capitalize;
-	margin: 0px 10px;
-	font-size: 25px;
-	font-style: italic;
-	font-weight: 400;
+	font-size: 30px;
+	font-weight: 500;
 }
-.wind {
-	margin-left: 20px;
+.weather-details {
 	font-size: 20px;
 	font-weight: 300;
 }
