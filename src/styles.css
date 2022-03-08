@@ -71,12 +71,9 @@ p.signature {
 .current-weather-info {
 	background-color: rgba(255, 255, 255, 0.6);
 	border-radius: 20px;
-	max-width: 400px;
 }
 
 .change-temperature-scale {
-	padding: 10px 20px 0px;
-
 	color: #1e56a0;
 }
 
@@ -109,12 +106,11 @@ p.signature {
 	margin: 0px 10px;
 	font-size: 25px;
 	font-style: italic;
-	font-weight: 300;
+	font-weight: 400;
 }
 .wind {
 	margin-left: 20px;
-	font-size: 25px;
-	font-style: italic;
+	font-size: 20px;
 	font-weight: 300;
 }
 .high-temp,

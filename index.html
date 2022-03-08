@@ -70,14 +70,25 @@
 
 				<h2 class="date" id="date"></h2>
 				<div class="row">
-					<div class="col-3">
+					<div class="col-2">
 						<img src="" id="icon" class="main-icon" />
 					</div>
-					<div class="col-4">
+					<div class="col-3">
 						<h2 id="current-temp"></h2>
 					</div>
-					<!--Changing temperature scale-->
-					<div class="col-5">
+
+					<div class="col-7">
+						<div class="row">
+							<h3 class="weather-description" id="description"></h3>
+						</div>
+						<div class="row">
+							<h3 class="wind" id="wind-speed"></h3>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-2"></div>
+					<div class="col-10">
 						<div class="change-temperature-scale">
 							<input
 								class="form-check-input"
@@ -89,30 +100,21 @@
 							<label class="form-check-label" for="flexRadioDefault1">
 								Celsius
 							</label>
-							<div>
-								<input
-									class="form-check-input"
-									name="flexRadioDefault"
-									type="radio"
-									id="flexRadioDefault2"
-								/>
-								<label class="form-check-label" for="flexRadioDefault2">
-									Fahrenheit
-								</label>
-							</div>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="col-6">
-							<h3 class="weather-description" id="description"></h3>
-						</div>
-						<div class="col-6">
-							<h3 class="wind" id="wind-speed"></h3>
+							<input
+								class="form-check-input"
+								name="flexRadioDefault"
+								type="radio"
+								id="flexRadioDefault2"
+							/>
+							<label class="form-check-label" for="flexRadioDefault2">
+								Fahrenheit
+							</label>
 						</div>
 					</div>
 				</div>
 			</div>
+
 			<!--5 day forecast grid
 
       <div class="row">
