@@ -1,5 +1,3 @@
-//Current Time Code
-
 function currentTimeInfo(timestamp) {
 	let date = new Date(timestamp);
 	let currentHour = date.getHours();
@@ -8,12 +6,40 @@ function currentTimeInfo(timestamp) {
 		currentMinute = `0${currentMinute}`;
 	}
 	let currentDay = date.getDay();
-	let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+	let days = [
+		"Sunday",
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday",
+	];
 	let day = days[currentDay];
 	return `${day} ${currentHour}:${currentMinute}`;
 }
 
-function showCityTemperature(response) {
+function changeToMetric() {
+	let showcelsiusTemp = document.querySelector("#current-temp");
+	let showCelsiusFeelsTemp = document.querySelector("#feels-like");
+	let showWindSpeedMetric = document.querySelector("#wind-speed");
+	showcelsiusTemp.innerHTML = `${celsiusTemp}°C`;
+	showCelsiusFeelsTemp.innerHTML = `Feels like ${celsiusFeelsTemp}°C`;
+	showWindSpeedMetric.innerHTML = `Winds ${windSpeed}kmph`;
+}
+
+function changetoImperial() {
+	let fahrenheitTemp = document.querySelector("#current-temp");
+	let fahrenheitFeelsTemp = document.querySelector("#feels-like");
+	let windSpeedImperial = document.querySelector("#wind-speed");
+	fahrenheitTemp.innerHTML = `${Math.round((celsiusTemp * 9) / 5 + 32)}°F`;
+	fahrenheitFeelsTemp.innerHTML = `Feels like ${Math.round(
+		(celsiusFeelsTemp * 9) / 5 + 32
+	)}°F`;
+	windSpeedImperial.innerHTML = `Winds ${Math.round(windSpeed * 0.621371)}mph`;
+}
+
+function showCityWeatherInfo(response) {
 	celsiusTemp = Math.round(response.data.main.temp);
 	let time = response.data.dt * 1000;
 	let timezone = response.data.timezone * 1000;
@@ -35,13 +61,17 @@ function showCityTemperature(response) {
 	document.querySelector(
 		"#feels-like"
 	).innerHTML = `Feels Like ${celsiusFeelsTemp}°C`;
-	console.log(response.data);
+
+	let fahrenheitChecked = document.getElementById("flexRadioDefault2").checked;
+	if (fahrenheitChecked === true) {
+		changetoImperial();
+	}
 }
 
 function search(city) {
 	let apiKey = "6b7e90e39996fee5720a5b5f0d132e9e";
 	let apiURLCityName = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-	axios.get(apiURLCityName).then(showCityTemperature);
+	axios.get(apiURLCityName).then(showCityWeatherInfo);
 }
 
 function getSearchCityData(event) {
@@ -60,8 +90,7 @@ function findGeoLocationData(position) {
 	let latitude = position.coords.latitude;
 	let longitude = position.coords.longitude;
 	let apiURLCoordinates = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-	console.log(apiURLCoordinates);
-	axios.get(apiURLCoordinates).then(showCityTemperature);
+	axios.get(apiURLCoordinates).then(showCityWeatherInfo);
 }
 
 function findGeoLocation(event) {
@@ -76,38 +105,14 @@ let currentLocationCheckBox = document.querySelector(
 );
 currentLocationCheckBox.addEventListener("change", findGeoLocation);
 
-//Conversion between Celsius & Fahrenheit
-
-function changeToCelsius() {
-	let showcelsiusTemp = document.querySelector("#current-temp");
-	let showCelsiusFeelsTemp = document.querySelector("#feels-like");
-	let showWindSpeedMetric = document.querySelector("#wind-speed");
-	showcelsiusTemp.innerHTML = `${celsiusTemp}°C`;
-	showCelsiusFeelsTemp.innerHTML = `Feels like ${celsiusFeelsTemp}°C`;
-	showWindSpeedMetric.innerHTML = `Winds ${windSpeed}kmph`;
-	console.log(showWindSpeedMetric);
-}
-
-function changetoFahrenheit() {
-	let fahrenheitTemp = document.querySelector("#current-temp");
-	let fahrenheitFeelsTemp = document.querySelector("#feels-like");
-	let windSpeedImperial = document.querySelector("#wind-speed");
-	fahrenheitTemp.innerHTML = `${Math.round((celsiusTemp * 9) / 5 + 32)}°F`;
-	fahrenheitFeelsTemp.innerHTML = `Feels like ${Math.round(
-		(celsiusFeelsTemp * 9) / 5 + 32
-	)}°F`;
-	windSpeedImperial.innerHTML = `Winds ${Math.round(windSpeed * 0.621371)}mph`;
-	console.log(windSpeedImperial);
-}
-
 let celsiusRadioButton = document.querySelector("#flexRadioDefault1");
-celsiusRadioButton.addEventListener("click", changeToCelsius);
+celsiusRadioButton.addEventListener("change", changeToMetric);
 
 let celsiusTemp = null;
 let celsiusFeelsTemp = null;
 let windSpeed = null;
 
 let fahrenheitRadioButton = document.querySelector("#flexRadioDefault2");
-fahrenheitRadioButton.addEventListener("click", changetoFahrenheit);
+fahrenheitRadioButton.addEventListener("change", changetoImperial);
 
 search("New York");

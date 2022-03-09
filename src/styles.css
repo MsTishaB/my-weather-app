@@ -29,13 +29,6 @@ h2.date {
 	margin-left: 40px;
 }
 
-h3 i {
-	color: #f6f6f6;
-	font-size: 40px;
-	display: inline;
-	padding-bottom: 25px;
-}
-
 p.signature {
 	text-align: right;
 	padding: 20px;
@@ -78,6 +71,17 @@ p.signature {
 	margin-bottom: 20px;
 }
 
+.weather-description {
+	text-transform: capitalize;
+	font-size: 30px;
+	font-weight: 500;
+}
+.weather-details {
+	font-size: 20px;
+	font-weight: 300;
+}
+/*
+
 .five-day-header {
 	text-align: center;
 	font-size: 25px;
@@ -102,15 +106,6 @@ p.signature {
 	color: rgb(46, 148, 185, 0.5);
 }
 
-.weather-description {
-	text-transform: capitalize;
-	font-size: 30px;
-	font-weight: 500;
-}
-.weather-details {
-	font-size: 20px;
-	font-weight: 300;
-}
 .high-temp,
 .low-temp {
 	font-size: 20px;
@@ -120,3 +115,10 @@ p.signature {
 .low-temp {
 	color: grey;
 }
+
+h3 i {
+	color: #f6f6f6;
+	font-size: 40px;
+	display: inline;
+	padding-bottom: 25px;
+}*/
