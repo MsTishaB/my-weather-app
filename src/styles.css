@@ -80,30 +80,18 @@ p.signature {
 	font-size: 20px;
 	font-weight: 300;
 }
-/*
 
-.five-day-header {
-	text-align: center;
-	font-size: 25px;
-	font-weight: 600;
-	font-family: "Livvic", sans-serif;
-	color: #1e56a0;
-	background-color: rgba(255, 255, 255, 0.7);
-	border-radius: 100px;
-	margin: 50px auto 15px;
-	max-width: 250px;
+.forecast-day {
+	background-color: rgba(255, 255, 255, 0.4);
+	margin-left: 25px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+	border-radius: 20px;
 }
 
 .day-of-week {
 	text-align: center;
 	color: #1e56a0;
-}
-
-.weather-icon {
-	font-size: 40px;
-	display: block;
-	text-align: center;
-	color: rgb(46, 148, 185, 0.5);
 }
 
 .high-temp,
@@ -115,10 +103,3 @@ p.signature {
 .low-temp {
 	color: grey;
 }
-
-h3 i {
-	color: #f6f6f6;
-	font-size: 40px;
-	display: inline;
-	padding-bottom: 25px;
-}*/
