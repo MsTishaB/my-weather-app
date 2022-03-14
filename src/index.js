@@ -74,7 +74,6 @@ function changetoImperial() {
 }
 
 function getForecast(coordinates) {
-	console.log(coordinates.lat);
 	let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 	axios.get(api).then(displayForecast);
 }
