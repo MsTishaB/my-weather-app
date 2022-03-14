@@ -19,19 +19,33 @@ function currentTimeInfo(timestamp) {
 	return `${day} ${currentHour}:${currentMinute}`;
 }
 
-function displayForecast() {
+function formatDate(timestamp) {
+	let date = new Date(timestamp);
+
+	let currentDay = date.getDay();
+	let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+	let day = days[currentDay];
+	return `${day}`;
+}
+
+function displayForecast(response) {
+	let forecast = response.data.daily;
 	let showForecast = document.querySelector("#forecast");
 	let forecastHTML = `<div class="row">`;
-	let days = ["Mon", "Tues", "Wed", "Thurs", "Fri"];
-	days.forEach(function (day) {
-		forecastHTML =
-			forecastHTML +
-			`				<div class="col-2 forecast-day" >
-          				<h5 class="day-of-week">${day}</h5>
-            			<img src = "http://openweathermap.org/img/wn/04n@2x.png"/>
-              			<div class="high-temp"> 15°C  </div>
-              			<div class="low-temp">  5°C    </div>
+
+	forecast.forEach(function (day, index) {
+		if (index < 6) {
+			forecastHTML =
+				forecastHTML +
+				`				<div class="col-2 forecast-day" >
+          				<h5 class="day-of-week">${formatDate(day.dt * 1000)}</h5>
+            			<img src = "http://openweathermap.org/img/wn/${
+										day.weather[0].icon
+									}@2x.png"/>
+              			<div class="high-temp"> ${Math.round(day.temp.max)}°C  </div>
+              			<div class="low-temp">  ${Math.round(day.temp.min)}°C    </div>
             		</div>`;
+		}
 	});
 
 	forecastHTML = forecastHTML + `</div>`;
@@ -87,7 +101,6 @@ function showCityWeatherInfo(response) {
 	document.querySelector(
 		"#feels-like"
 	).innerHTML = `Feels Like ${celsiusFeelsTemp}°C`;
-	displayForecast();
 
 	let fahrenheitChecked = document.getElementById("flexRadioDefault2").checked;
 	if (fahrenheitChecked === true) {
