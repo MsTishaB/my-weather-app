@@ -19,6 +19,26 @@ function currentTimeInfo(timestamp) {
 	return `${day} ${currentHour}:${currentMinute}`;
 }
 
+function displayForecast() {
+	let showForecast = document.querySelector("#forecast");
+	let forecastHTML = `<div class="row">`;
+	let days = ["Mon", "Tues", "Wed", "Thurs", "Fri"];
+	days.forEach(function (day) {
+		forecastHTML =
+			forecastHTML +
+			`				<div class="col-2 forecast-day" >
+          				<h5 class="day-of-week">${day}</h5>
+            			<img src = "http://openweathermap.org/img/wn/04n@2x.png"/>
+              			<div class="high-temp"> 15°C  </div>
+              			<div class="low-temp">  5°C    </div>
+            		</div>`;
+	});
+
+	forecastHTML = forecastHTML + `</div>`;
+
+	showForecast.innerHTML = forecastHTML;
+}
+
 function changeToMetric() {
 	let showcelsiusTemp = document.querySelector("#current-temp");
 	let showCelsiusFeelsTemp = document.querySelector("#feels-like");
@@ -37,6 +57,12 @@ function changetoImperial() {
 		(celsiusFeelsTemp * 9) / 5 + 32
 	)}°F`;
 	windSpeedImperial.innerHTML = `Winds ${Math.round(windSpeed * 0.621371)}mph`;
+}
+
+function getForecast(coordinates) {
+	console.log(coordinates.lat);
+	let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+	axios.get(api).then(displayForecast);
 }
 
 function showCityWeatherInfo(response) {
@@ -61,15 +87,17 @@ function showCityWeatherInfo(response) {
 	document.querySelector(
 		"#feels-like"
 	).innerHTML = `Feels Like ${celsiusFeelsTemp}°C`;
+	displayForecast();
 
 	let fahrenheitChecked = document.getElementById("flexRadioDefault2").checked;
 	if (fahrenheitChecked === true) {
 		changetoImperial();
 	}
+
+	getForecast(response.data.coord);
 }
 
 function search(city) {
-	let apiKey = "6b7e90e39996fee5720a5b5f0d132e9e";
 	let apiURLCityName = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 	axios.get(apiURLCityName).then(showCityWeatherInfo);
 }
@@ -111,6 +139,7 @@ celsiusRadioButton.addEventListener("change", changeToMetric);
 let celsiusTemp = null;
 let celsiusFeelsTemp = null;
 let windSpeed = null;
+let apiKey = "6b7e90e39996fee5720a5b5f0d132e9e";
 
 let fahrenheitRadioButton = document.querySelector("#flexRadioDefault2");
 fahrenheitRadioButton.addEventListener("change", changetoImperial);
