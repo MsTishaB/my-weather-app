@@ -28,22 +28,49 @@ function formatDate(timestamp) {
 	return `${day}`;
 }
 
+function displayForecastImperial(response) {
+	let forecast = response.data.daily;
+	let showForecast = document.querySelector("#forecast");
+	let forecastHTML = `<div class="row">`;
+
+	forecast.forEach(function (day, index) {
+		let date = formatDate(day.dt * 1000);
+		celsiusHighTemp = Math.round(day.temp.max);
+		celsiusLowTemp = Math.round(day.temp.min);
+		if (index < 6) {
+			forecastHTML =
+				forecastHTML +
+				`				<div class="col-2 forecast-day" >
+          				<h5 class="day-of-week">${date}</h5>
+            			<img src = "http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
+              			<div class="high-temp" id="high-temp"> ${celsiusHighTemp}°F  </div>
+              			<div class="low-temp">  ${celsiusLowTemp}°F    </div>
+            		</div>`;
+		}
+	});
+
+	forecastHTML = forecastHTML + `</div>`;
+
+	showForecast.innerHTML = forecastHTML;
+}
+
 function displayForecast(response) {
 	let forecast = response.data.daily;
 	let showForecast = document.querySelector("#forecast");
 	let forecastHTML = `<div class="row">`;
 
 	forecast.forEach(function (day, index) {
+		let date = formatDate(day.dt * 1000);
+		celsiusHighTemp = Math.round(day.temp.max);
+		celsiusLowTemp = Math.round(day.temp.min);
 		if (index < 6) {
 			forecastHTML =
 				forecastHTML +
 				`				<div class="col-2 forecast-day" >
-          				<h5 class="day-of-week">${formatDate(day.dt * 1000)}</h5>
-            			<img src = "http://openweathermap.org/img/wn/${
-										day.weather[0].icon
-									}@2x.png"/>
-              			<div class="high-temp"> ${Math.round(day.temp.max)}°C  </div>
-              			<div class="low-temp">  ${Math.round(day.temp.min)}°C    </div>
+          				<h5 class="day-of-week">${date}</h5>
+            			<img src = "http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
+              			<div class="high-temp" id="high-temp"> ${celsiusHighTemp}°C  </div>
+              			<div class="low-temp">  ${celsiusLowTemp}°C    </div>
             		</div>`;
 		}
 	});
@@ -60,6 +87,8 @@ function changeToMetric() {
 	showcelsiusTemp.innerHTML = `${celsiusTemp}°C`;
 	showCelsiusFeelsTemp.innerHTML = `Feels like ${celsiusFeelsTemp}°C`;
 	showWindSpeedMetric.innerHTML = `Winds ${windSpeed}kmph`;
+	let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latCoordinates}&lon=${lonCoordinates}&appid=${apiKey}&units=metric`;
+	axios.get(api).then(displayForecast);
 }
 
 function changetoImperial() {
@@ -67,15 +96,25 @@ function changetoImperial() {
 	let fahrenheitFeelsTemp = document.querySelector("#feels-like");
 	let windSpeedImperial = document.querySelector("#wind-speed");
 	fahrenheitTemp.innerHTML = `${Math.round((celsiusTemp * 9) / 5 + 32)}°F`;
+
 	fahrenheitFeelsTemp.innerHTML = `Feels like ${Math.round(
 		(celsiusFeelsTemp * 9) / 5 + 32
 	)}°F`;
 	windSpeedImperial.innerHTML = `Winds ${Math.round(windSpeed * 0.621371)}mph`;
+	console.log(latCoordinates);
+	getForecastImperial([latCoordinates, lonCoordinates]);
 }
 
 function getForecast(coordinates) {
-	let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+	latCoordinates = coordinates.lat;
+	lonCoordinates = coordinates.lon;
+	let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latCoordinates}&lon=${lonCoordinates}&appid=${apiKey}&units=metric`;
 	axios.get(api).then(displayForecast);
+}
+
+function getForecastImperial(coordinates) {
+	let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latCoordinates}&lon=${lonCoordinates}&appid=${apiKey}&units=Imperial`;
+	axios.get(api).then(displayForecastImperial);
 }
 
 function showCityWeatherInfo(response) {
@@ -100,7 +139,6 @@ function showCityWeatherInfo(response) {
 	document.querySelector(
 		"#feels-like"
 	).innerHTML = `Feels Like ${celsiusFeelsTemp}°C`;
-
 	let fahrenheitChecked = document.getElementById("flexRadioDefault2").checked;
 	if (fahrenheitChecked === true) {
 		changetoImperial();
@@ -151,9 +189,17 @@ celsiusRadioButton.addEventListener("change", changeToMetric);
 let celsiusTemp = null;
 let celsiusFeelsTemp = null;
 let windSpeed = null;
+let celsiusHighTemp = null;
+let celsiusLowTemp = null;
+let latCoordinates = null;
+let lonCoordinates = null;
+
 let apiKey = "6b7e90e39996fee5720a5b5f0d132e9e";
 
 let fahrenheitRadioButton = document.querySelector("#flexRadioDefault2");
 fahrenheitRadioButton.addEventListener("change", changetoImperial);
 
 search("New York");
+
+//If a variable about the position of the temperature gauge is TRUE, then the forecast will run a certain for each loop that calculates imperial units otherwise it runs the other loop that looks at metric units
+//Alternatively re-run the entire forecast for the first api and the second one using metric symbols if the radio button changes
