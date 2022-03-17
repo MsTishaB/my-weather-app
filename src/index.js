@@ -138,12 +138,10 @@ function showCityWeatherInfo(response) {
 	document.querySelector(
 		"#feels-like"
 	).innerHTML = `Feels Like ${celsiusFeelsTemp}°C`;
+
 	getForecast(response.data.coord);
 
-	let fahrenheitChecked = document.getElementById("flexRadioDefault2").checked;
-	if (fahrenheitChecked === true) {
-		changetoImperial();
-	}
+	document.getElementById("flexRadioDefault1").checked = true;
 }
 
 function search(city) {
