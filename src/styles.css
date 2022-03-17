@@ -68,7 +68,7 @@ p.signature {
 
 .change-temperature-scale {
 	color: #1e56a0;
-	margin-bottom: 20px;
+	margin-top: 40px;
 }
 
 .weather-description {
@@ -90,6 +90,7 @@ p.signature {
 .day-of-week {
 	text-align: center;
 	color: #1e56a0;
+	padding-top: 40px;
 }
 
 .high-temp,

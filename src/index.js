@@ -101,7 +101,6 @@ function changetoImperial() {
 		(celsiusFeelsTemp * 9) / 5 + 32
 	)}°F`;
 	windSpeedImperial.innerHTML = `Winds ${Math.round(windSpeed * 0.621371)}mph`;
-	console.log(latCoordinates);
 	getForecastImperial([latCoordinates, lonCoordinates]);
 }
 
@@ -139,12 +138,12 @@ function showCityWeatherInfo(response) {
 	document.querySelector(
 		"#feels-like"
 	).innerHTML = `Feels Like ${celsiusFeelsTemp}°C`;
+	getForecast(response.data.coord);
+
 	let fahrenheitChecked = document.getElementById("flexRadioDefault2").checked;
 	if (fahrenheitChecked === true) {
 		changetoImperial();
 	}
-
-	getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -200,6 +199,3 @@ let fahrenheitRadioButton = document.querySelector("#flexRadioDefault2");
 fahrenheitRadioButton.addEventListener("change", changetoImperial);
 
 search("New York");
-
-//If a variable about the position of the temperature gauge is TRUE, then the forecast will run a certain for each loop that calculates imperial units otherwise it runs the other loop that looks at metric units
-//Alternatively re-run the entire forecast for the first api and the second one using metric symbols if the radio button changes

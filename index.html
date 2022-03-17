@@ -66,37 +66,11 @@
 			</div>
 			<!--Current weather information-->
 			<div class="current-weather-info">
-				<h1 class="current-city" id="current-city"></h1>
-
-				<h2 class="date" id="date"></h2>
 				<div class="row">
-					<div class="col-2">
-						<img src="" id="icon" class="main-icon" />
+					<div class="col-9">
+						<h1 class="current-city" id="current-city"></h1>
 					</div>
 					<div class="col-3">
-						<h2 id="current-temp"></h2>
-					</div>
-
-					<div class="col-7">
-						<div class="row">
-							<h3 class="weather-description" id="description"></h3>
-						</div>
-						<div class="row">
-							<div class="col-3">
-								<h3 class="weather-details" id="wind-speed"></h3>
-							</div>
-							<div class="col-3">
-								<h3 class="weather-details" id="humidity"></h3>
-							</div>
-							<div class="col-3">
-								<h3 class="weather-details" id="feels-like"></h3>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-2"></div>
-					<div class="col-10">
 						<div class="change-temperature-scale">
 							<input
 								class="form-check-input"
@@ -109,27 +83,58 @@
 							<label class="form-check-label" for="flexRadioDefault1">
 								Celsius
 							</label>
+							<div>
+								<input
+									class="form-check-input"
+									name="flexRadioDefault"
+									type="radio"
+									id="flexRadioDefault2"
+									value="Fahrenheit"
+								/>
+								<label class="form-check-label" for="flexRadioDefault2">
+									Fahrenheit
+								</label>
+							</div>
+						</div>
+					</div>
+				
 
-							<input
-								class="form-check-input"
-								name="flexRadioDefault"
-								type="radio"
-								id="flexRadioDefault2"
-								value="Fahrenheit"
-							/>
-							<label class="form-check-label" for="flexRadioDefault2">
-								Fahrenheit
-							</label>
+				<h2 class="date" id="date"></h2>
+			</div>
+			<div class="row">
+				<div class="col-2">
+					<img src="" id="icon" class="main-icon" />
+				</div>
+				<div class="col-3">
+					<h2 id="current-temp"></h2>
+				</div>
+
+				<div class="col-7">
+					<div class="row">
+						<h3 class="weather-description" id="description"></h3>
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<h3 class="weather-details" id="wind-speed"></h3>
+						</div>
+						<div class="col-3">
+							<h3 class="weather-details" id="humidity"></h3>
+						</div>
+						<div class="col-3">
+							<h3 class="weather-details" id="feels-like"></h3>
 						</div>
 					</div>
 				</div>
-			
+			</div>
+			<div class="row">
+				<div class="col-2"></div>
+				<div class="col-10"></div>
+			</div>
 
 			<!--5 day forecast grid-->
 
-			<div id="forecast">
-      			</div>	
-	</div>
+			<div id="forecast"></div>
+		</div>
 		<p class="signature">
 			<a href="https://github.com/MsTishaB/my-weather-app" target="_blank"
 				>Open-source code</a
