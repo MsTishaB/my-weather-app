@@ -119,8 +119,8 @@ function getForecastImperial(coordinates) {
 function showCityWeatherInfo(response) {
 	celsiusTemp = Math.round(response.data.main.temp);
 	let time = response.data.dt * 1000;
-	let timezone = response.data.timezone * 1000;
-	let localTime = currentTimeInfo(time + timezone);
+
+	let lastUpdated = currentTimeInfo(time);
 	windSpeed = Math.round((response.data.wind.speed * 3600) / 1000);
 	let conditions = response.data.weather[0].description;
 	let icon = response.data.weather[0].icon;
@@ -133,7 +133,7 @@ function showCityWeatherInfo(response) {
 	document
 		.querySelector("#icon")
 		.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
-	document.querySelector("#date").innerHTML = `Local Time: ${localTime}`;
+	document.querySelector("#date").innerHTML = `Last Updated: ${lastUpdated}`;
 	document.querySelector("#humidity").innerHTML = `Humidity ${humidity}%`;
 	document.querySelector(
 		"#feels-like"
