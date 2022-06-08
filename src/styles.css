@@ -75,10 +75,12 @@ p.signature {
 	text-transform: capitalize;
 	font-size: 30px;
 	font-weight: 500;
+	text-align: center;
 }
 .weather-details {
 	font-size: 20px;
 	font-weight: 300;
+	text-align: center;
 }
 
 .forecast-day {
@@ -101,4 +103,92 @@ p.signature {
 
 .low-temp {
 	color: grey;
+}
+
+.details-row {
+	padding: 0 30px;
+}
+
+@media (max-width: 576px) {
+	.container {
+		max-width: 350px;
+	}
+
+	h1.current-city {
+		font-size: 30px;
+		padding: 10px 0px 0px;
+	}
+
+	h2.date {
+		font-weight: 300;
+		font-size: 12px;
+		margin-left: 0px;
+	}
+
+	.change-temperature-scale {
+		margin-top: 10px;
+		margin-left: 30px;
+	}
+
+	h2 {
+		font-size: 30px;
+	}
+
+	.weather-description {
+		font-size: 20px;
+	}
+
+	.weather-details {
+		font-size: 12px;
+		text-align: center;
+	}
+
+	.day-of-week {
+		padding-top: 0px;
+	}
+
+	.high-temp,
+	.low-temp {
+		font-size: 15px;
+	}
+
+	.day-of-week {
+		font-size: 15px;
+	}
+
+	.change-city {
+		width: 160px;
+		font-size: 12px;
+	}
+
+	.form-check-label {
+		font-size: 12px;
+	}
+
+	.search-button {
+		font-size: 12px;
+	}
+	.details-row {
+		padding-right: 10px;
+		padding-left: 0px;
+	}
+
+	.current-weather-info {
+		padding: 10px;
+	}
+
+	.main-icon {
+		left: -10px;
+		top: -15px;
+		width: 65px;
+	}
+
+	.form-control {
+		font-size: 12px;
+	}
+
+	p.signature {
+		font-size: 12px;
+		text-align: center;
+	}
 }

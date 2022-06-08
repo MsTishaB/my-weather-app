@@ -6,15 +6,7 @@ function currentTimeInfo(timestamp) {
 		currentMinute = `0${currentMinute}`;
 	}
 	let currentDay = date.getDay();
-	let days = [
-		"Sunday",
-		"Monday",
-		"Tuesday",
-		"Wednesday",
-		"Thursday",
-		"Friday",
-		"Saturday",
-	];
+	let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 	let day = days[currentDay];
 	return `${day} ${currentHour}:${currentMinute}`;
 }
@@ -23,7 +15,7 @@ function formatDate(timestamp) {
 	let date = new Date(timestamp);
 
 	let currentDay = date.getDay();
-	let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+	let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
 	let day = days[currentDay];
 	return `${day}`;
 }
@@ -42,7 +34,7 @@ function displayForecastImperial(response) {
 				forecastHTML +
 				`				<div class="col-2 forecast-day" >
           				<h5 class="day-of-week">${date}</h5>
-            			<img src = "http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
+            			<img src = "http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" class="img-fluid"/>
               			<div class="high-temp" id="high-temp"> ${celsiusHighTemp}°F  </div>
               			<div class="low-temp">  ${celsiusLowTemp}°F    </div>
             		</div>`;
@@ -68,7 +60,7 @@ function displayForecast(response) {
 				forecastHTML +
 				`				<div class="col-2 forecast-day" >
           				<h5 class="day-of-week">${date}</h5>
-            			<img src = "http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/>
+            			<img src = "http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" class="img-fluid"/>
               			<div class="high-temp" id="high-temp"> ${celsiusHighTemp}°C  </div>
               			<div class="low-temp">  ${celsiusLowTemp}°C    </div>
             		</div>`;
